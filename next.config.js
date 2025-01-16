@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
-    appDir: true
+    serverActions: true
   },
   images: {
     remotePatterns: [
@@ -33,15 +33,8 @@ const nextConfig = {
         ],
       },
     ]
-  },
-  modularizeImports: {
-    'react': {
-      transform: 'react/{{member}}'
-    },
-    'react-dom': {
-      transform: 'react-dom/{{member}}'
-    }
   }
 }
 
 module.exports = nextConfig
+

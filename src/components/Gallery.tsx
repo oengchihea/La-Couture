@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Plus } from 'lucide-react'
@@ -88,10 +88,11 @@ export default function Gallery() {
             >
               <div className="relative aspect-[3/4]">
                 <Image
-                  src={suit.image}
+                  src={suit.image || "/placeholder.svg"}
                   alt={suit.name}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 {suit.isNew && (
                   <div className="absolute top-4 left-4 z-10">
@@ -135,4 +136,3 @@ export default function Gallery() {
     </section>
   )
 }
-

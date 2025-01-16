@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback } from 'react'
+import React, { useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 
 export const useCustomNavigation = () => {
@@ -29,3 +29,4 @@ export const useCustomNavigation = () => {
 
   return { navigate }
 }
+

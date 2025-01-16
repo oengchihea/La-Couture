@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
@@ -24,7 +24,8 @@ export default function Hero() {
         fill
         priority
         className="object-cover opacity-60"
-        quality={100}
+        sizes="100vw"
+        quality={85}
       />
 
       <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-start">

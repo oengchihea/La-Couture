@@ -36,6 +36,7 @@ export default function Aesthetics() {
                 alt="Couple ascending spiral stairs"
                 fill
                 className="object-cover grayscale rounded-lg"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </motion.div>
             <motion.div
@@ -49,6 +50,7 @@ export default function Aesthetics() {
                 alt="Couple with flowing veil"
                 fill
                 className="object-cover grayscale rounded-lg"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </motion.div>
           </div>
@@ -64,6 +66,7 @@ export default function Aesthetics() {
                 alt="Artistic hand composition"
                 fill
                 className="object-cover grayscale rounded-lg"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </motion.div>
             <motion.div

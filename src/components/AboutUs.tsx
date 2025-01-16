@@ -32,6 +32,7 @@ export default function AboutUs() {
                 alt="Wedding rings detail"
                 fill
                 className="object-cover grayscale rounded-lg shadow-lg"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
           </motion.div>
@@ -71,6 +72,7 @@ export default function AboutUs() {
                   alt="Couple on stairs"
                   fill
                   className="object-cover grayscale rounded-lg shadow-lg"
+                  sizes="(max-width: 768px) 100vw, 25vw"
                 />
               </motion.div>
               <motion.div
@@ -85,6 +87,7 @@ export default function AboutUs() {
                   alt="Couple dancing"
                   fill
                   className="object-cover grayscale rounded-lg shadow-lg"
+                  sizes="(max-width: 768px) 100vw, 25vw"
                 />
               </motion.div>
             </div>
