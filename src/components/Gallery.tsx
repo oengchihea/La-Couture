@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import * as React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Plus } from 'lucide-react'
@@ -58,7 +58,7 @@ const suits = [
 ]
 
 export default function Gallery() {
-  const [hoveredId, setHoveredId] = useState<number | null>(null)
+  const [hoveredId, setHoveredId] = React.useState<number | null>(null)
   const { navigate } = useCustomNavigation()
 
   return (
@@ -136,3 +136,4 @@ export default function Gallery() {
     </section>
   )
 }
+

@@ -1,11 +1,20 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import * as React from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown, Search, X, ArrowLeft, Eye, ShoppingBag, Heart, ZoomIn } from 'lucide-react'
 import { useCustomNavigation } from '@/utils/navigation'
-import type { GalleryItem } from '@/types/gallery'
+
+interface GalleryItem {
+  id: number
+  name: string
+  price: number
+  image: string
+  category: 'men' | 'women'
+  isNew: boolean
+  isPopular: boolean
+}
 
 const allItems: GalleryItem[] = [
   { 
@@ -119,23 +128,23 @@ const allItems: GalleryItem[] = [
 ]
 
 export default function GalleryPage() {
-  const [items, setItems] = useState<GalleryItem[]>(allItems)
-  const [category, setCategory] = useState<'all' | 'men' | 'women'>('all')
-  const [sortBy, setSortBy] = useState<'default' | 'popular' | 'new' | 'price-asc' | 'price-desc'>('default')
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const [searchTerm, setSearchTerm] = useState('')
-  const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
-  const [priceRange, setPriceRange] = useState<'all' | 'under-200' | '200-500' | 'over-500'>('all')
-  const [isZoomed, setIsZoomed] = useState(false)
+  const [items, setItems] = React.useState<GalleryItem[]>(allItems)
+  const [category, setCategory] = React.useState<'all' | 'men' | 'women'>('all')
+  const [sortBy, setSortBy] = React.useState<'default' | 'popular' | 'new' | 'price-asc' | 'price-desc'>('default')
+  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false)
+  const [searchTerm, setSearchTerm] = React.useState('')
+  const [selectedItem, setSelectedItem] = React.useState<GalleryItem | null>(null)
+  const [isLoading, setIsLoading] = React.useState(true)
+  const [priceRange, setPriceRange] = React.useState<'all' | 'under-200' | '200-500' | 'over-500'>('all')
+  const [isZoomed, setIsZoomed] = React.useState(false)
   const { navigate } = useCustomNavigation()
 
-  useEffect(() => {
+  React.useEffect(() => {
     // Simulate loading
     setTimeout(() => setIsLoading(false), 1000)
   }, [])
 
-  useEffect(() => {
+  React.useEffect(() => {
     let filteredItems = [...allItems]
 
     if (category !== 'all') {
@@ -148,7 +157,6 @@ export default function GalleryPage() {
       )
     }
 
-    // Add price range filtering
     switch (priceRange) {
       case 'under-200':
         filteredItems = filteredItems.filter(item => item.price < 200)
@@ -191,7 +199,6 @@ export default function GalleryPage() {
 
   return (
     <section className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8 relative">
-      {/* Floating Back Button */}
       <motion.button
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
@@ -289,7 +296,6 @@ export default function GalleryPage() {
           </div>
         </div>
 
-        {/* Price Range Filters */}
         <motion.div 
           className="flex gap-4 mb-8 overflow-x-auto pb-2"
           initial={{ y: 20, opacity: 0 }}
@@ -332,7 +338,6 @@ export default function GalleryPage() {
           </div>
         </motion.div>
 
-        {/* Results Summary */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -347,7 +352,6 @@ export default function GalleryPage() {
             layout
           >
             {isLoading ? (
-              // Skeleton Loading
               [...Array(6)].map((_, index) => (
                 <div
                   key={`skeleton-${index}`}
@@ -373,7 +377,7 @@ export default function GalleryPage() {
                 >
                   <div className="relative aspect-[3/4]">
                     <Image
-                      src={item.image}
+                      src={item.image || "/placeholder.svg"}
                       alt={item.name}
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -455,7 +459,7 @@ export default function GalleryPage() {
                   onClick={() => setIsZoomed(!isZoomed)}
                 >
                   <Image
-                    src={selectedItem.image}
+                    src={selectedItem.image || "/placeholder.svg"}
                     alt={selectedItem.name}
                     fill
                     className="object-cover rounded-lg"
