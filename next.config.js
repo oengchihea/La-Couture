@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  experimental: {
+    appDir: true,
+    serverActions: true
+  },
   images: {
     remotePatterns: [
       {
@@ -42,8 +46,19 @@ const nextConfig = {
         'react-dom': 'preact/compat',
       });
     }
+
+    // Add support for importing .node files
+    config.resolve.extensions.push('.node');
+
     return config;
   },
+  // Ensure proper transpilation of dependencies
+  transpilePackages: [
+    '@radix-ui/react-dialog',
+    '@radix-ui/react-separator',
+    '@radix-ui/react-slot',
+    'lucide-react'
+  ]
 }
 
 module.exports = nextConfig
