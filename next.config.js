@@ -3,7 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   experimental: {
     appDir: true,
-    serverActions: true
+    serverActions: true,
+    typedRoutes: true
   },
   images: {
     remotePatterns: [
@@ -35,8 +36,15 @@ const nextConfig = {
       },
     ]
   },
-  // Temporarily remove Preact optimization to ensure React works
-  webpack: (config) => {
+  webpack: (config, { dev, isServer }) => {
+    if (!dev && !isServer) {
+      Object.assign(config.resolve.alias, {
+        'react/jsx-runtime': 'preact/compat/jsx-runtime',
+        'react': 'preact/compat',
+        'react-dom/test-utils': 'preact/test-utils',
+        'react-dom': 'preact/compat'
+      });
+    }
     return config;
   }
 }
