@@ -10,7 +10,7 @@ const testimonials = [
     id: 1,
     name: "Rith Sinawatra",
     role: "Designer",
-    image: "/images/testimonials/profile 1.png",
+    image: "/images/testimonials/profile 1.jpg",
     rating: 5,
     text: "La Couture has revolutionized my wardrobe! The perfect fit, exquisite craftsmanship, and attention to detail make each piece feel custom-made. Their designs are not just clothes; they're confidence boosters."
   },
@@ -18,7 +18,7 @@ const testimonials = [
     id: 2,
     name: "Lim Phanith",
     role: "Developer",
-    image: "/images/testimonials/profile 2.png",
+    image: "/images/testimonials/profile 2.jpg",
     rating: 4,
     text: "La Couture has revolutionized my wardrobe! The perfect fit, exquisite craftsmanship, and attention to detail make each piece feel custom-made. Their designs are not just clothes; they're confidence boosters."
   }
