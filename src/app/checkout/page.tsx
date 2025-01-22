@@ -11,13 +11,10 @@ import CheckoutForm from "./CheckoutForm"
 export default function CheckoutPage() {
   const { items, removeFromCart, updateQuantity, total, clearCart } = useCart()
   const { navigate } = useCustomNavigation()
-  const [isProcessing, setIsProcessing] = useState(false)
   const [showForm, setShowForm] = useState(false)
 
-  const handleInitiateCheckout = async () => {
-    setIsProcessing(true)
+  const handleInitiateCheckout = () => {
     setShowForm(true)
-    setIsProcessing(false)
   }
 
   return (
@@ -102,10 +99,9 @@ export default function CheckoutPage() {
                 {!showForm ? (
                   <button
                     onClick={handleInitiateCheckout}
-                    disabled={isProcessing}
-                    className="w-full bg-black text-white py-3 rounded-full hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-black text-white py-3 rounded-full hover:bg-gray-800 transition-colors"
                   >
-                    {isProcessing ? "Processing..." : "Proceed to Checkout"}
+                    Proceed to Checkout
                   </button>
                 ) : (
                   <CheckoutForm
