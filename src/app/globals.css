@@ -11,7 +11,7 @@
   html {
     @apply bg-[#ffffff];
   }
-  
+
   body {
     @apply bg-[#ffffff] min-h-screen;
   }
@@ -70,5 +70,38 @@ html {
 .page-transition-enter-active {
   opacity: 1;
   transition: opacity 300ms ease-in-out;
+}
+
+/* Cart Animation */
+@keyframes addToCart {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.cart-animation {
+  animation: addToCart 0.5s ease-in-out;
+}
+
+/* Loading Animation */
+.loading-skeleton {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.06) 25%, rgba(0, 0, 0, 0.15) 37%, rgba(0, 0, 0, 0.06) 63%);
+  background-size: 400% 100%;
+  animation: loading 1.4s ease infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
 }
 
